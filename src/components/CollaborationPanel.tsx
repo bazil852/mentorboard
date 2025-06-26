@@ -8,7 +8,7 @@ interface CollaborationPanelProps {
 
 export const CollaborationPanel: React.FC<CollaborationPanelProps> = ({
   roomId,
-  editor
+  editor: _editor
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const shareUrl = `${window.location.origin}?room=${encodeURIComponent(roomId)}`

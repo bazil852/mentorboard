@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { Tldraw, Editor, toRichText, createTLStore, defaultShapeUtils, defaultTools } from 'tldraw'
+import { Tldraw, Editor, toRichText } from 'tldraw'
 import { useSyncDemo } from '@tldraw/sync'
 import 'tldraw/tldraw.css'
 import './App.css'

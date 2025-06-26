@@ -1,0 +1,196 @@
+@import "tailwindcss";
+@import 'tldraw/tldraw.css';
+
+:root {
+  --white-50: #fafafa;
+  --white-100: #f4f4f5;
+  --white-200: #e4e4e7;
+  --white-300: #d4d4d8;
+  --white-400: #a1a1aa;
+  --white-500: #71717a;
+  --white-600: #52525b;
+  --white-700: #3f3f46;
+  --white-800: #27272a;
+  --white-900: #18181b;
+  --white-950: #09090b;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Hide tldraw watermark */
+.tl-watermark_SEE-LICENSE,
+.tl-watermark,
+[class*="watermark"],
+[class*="tl-watermark"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Custom mentor program watermark */
+.mentor-watermark {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  color: #374151;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Custom styles for mentor board - White Theme */
+.mentor-board-container {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+}
+
+.mentor-toolbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mentor-sidebar {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid #e5e7eb;
+}
+
+/* Logo styling */
+.mentor-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.mentor-logo img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Black button variants */
+.btn-black {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.btn-black:hover {
+  background: #374151;
+  border-color: #374151;
+}
+
+.btn-black-light {
+  background: #374151;
+  color: #ffffff;
+}
+
+.btn-black-light:hover {
+  background: #4b5563;
+}
+
+.btn-black-outline {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.btn-black-outline:hover {
+  background: #f9fafb;
+  border-color: #374151;
+}
+
+.btn-gray {
+  background: #6b7280;
+  color: #ffffff;
+}
+
+.btn-gray:hover {
+  background: #4b5563;
+}
+
+/* Text color utilities for white theme */
+.text-black { color: #000000; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-700 { color: #374151; }
+.text-gray-800 { color: #1f2937; }
+.text-gray-900 { color: #111827; }
+
+/* Collaboration panel styling */
+.collaboration-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Settings modal styling */
+.settings-modal {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.settings-modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Template button variants */
+.template-btn-1on1 {
+  background: #000000;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.template-btn-1on1:hover {
+  background: #374151;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.template-btn-feedback {
+  background: #4b5563;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.template-btn-feedback:hover {
+  background: #374151;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.template-btn-planning {
+  background: #6b7280;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.template-btn-planning:hover {
+  background: #4b5563;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}

@@ -6,6 +6,7 @@ interface MentorToolbarProps {
   onCreateNewRoom: () => void
   onAddTemplate: (template: string) => void
   onShowSettings: () => void
+  onPrintBoard: () => void
   roomId: string
 }
 
@@ -15,81 +16,89 @@ export const MentorToolbar: React.FC<MentorToolbarProps> = ({
   onCreateNewRoom,
   onAddTemplate,
   onShowSettings,
+  onPrintBoard,
   roomId
 }) => {
   return (
-    <div className="mentor-toolbar fixed top-0 left-0 right-0 h-15 z-50 flex items-center justify-between px-4 py-2">
-      {/* Left Section - Logo and Title */}
-      <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-3">
-          <div className="mentor-logo">
-            <img 
-              src="https://i.postimg.cc/25s922XT/image.png" 
-              alt="The Mentor Board Logo"
-              className="w-6 h-6 object-contain"
-            />
-          </div>
-          <h1 className="text-xl font-bold text-black">The Mentor Board</h1>
+    <div className="p-3 space-y-3 min-w-[280px]">
+      {/* Room Status */}
+      {isCollaborating && (
+        <div className="bg-gradient-to-r from-green-100 to-green-50 border border-green-200 text-green-800 px-3 py-2 rounded-lg text-sm font-medium">
+          🌐 Room: {roomId.split('-').pop()}
         </div>
-        
-        {isCollaborating && (
-          <div className="bg-gradient-to-r from-green-500 to-green-400 text-white px-3 py-1 rounded-full text-sm font-medium">
-            🌐 Room: {roomId.split('-').pop()}
-          </div>
-        )}
-      </div>
+      )}
 
-      {/* Center Section - Templates */}
-      <div className="flex items-center space-x-3">
-        <span className="text-sm text-gray-700 mr-2 font-medium">Templates:</span>
-        <button
-          onClick={() => onAddTemplate('1on1')}
-          className="template-btn-1on1 px-3 py-1 rounded text-sm font-medium transition-all duration-200"
-        >
-          📅 1-on-1
-        </button>
-        <button
-          onClick={() => onAddTemplate('feedback')}
-          className="template-btn-feedback px-3 py-1 rounded text-sm font-medium transition-all duration-200"
-        >
-          💬 Feedback
-        </button>
-        <button
-          onClick={() => onAddTemplate('planning')}
-          className="template-btn-planning px-3 py-1 rounded text-sm font-medium transition-all duration-200"
-        >
-          📋 Planning
-        </button>
-      </div>
-
-      {/* Right Section - Collaboration and Settings */}
-      <div className="flex items-center space-x-3">
-        <button
-          onClick={onToggleCollaboration}
-          className={`px-4 py-2 rounded text-sm font-medium transition-all duration-200 ${
-            isCollaborating
-              ? 'btn-black'
-              : 'btn-black-outline'
-          }`}
-        >
-          {isCollaborating ? '👥 Collaborating' : '🔗 Start Collaboration'}
-        </button>
-        
-        {!isCollaborating && (
+      {/* Templates Section */}
+      <div className="space-y-2">
+        <h3 className="text-sm font-semibold text-gray-700">Templates</h3>
+        <div className="grid grid-cols-1 gap-2">
           <button
-            onClick={onCreateNewRoom}
-            className="btn-black-light px-4 py-2 rounded text-sm font-medium transition-all duration-200"
+            onClick={() => onAddTemplate('1on1')}
+            className="flex items-center space-x-2 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-sm font-medium transition-colors"
           >
-            🚀 New Room
+            <span>📅</span>
+            <span>1-on-1 Meeting</span>
           </button>
-        )}
+          <button
+            onClick={() => onAddTemplate('feedback')}
+            className="flex items-center space-x-2 px-3 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg text-sm font-medium transition-colors"
+          >
+            <span>💬</span>
+            <span>Feedback Session</span>
+          </button>
+          <button
+            onClick={() => onAddTemplate('planning')}
+            className="flex items-center space-x-2 px-3 py-2 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-sm font-medium transition-colors"
+          >
+            <span>📋</span>
+            <span>Planning Board</span>
+          </button>
+        </div>
+      </div>
 
-        <button
-          onClick={onShowSettings}
-          className="btn-gray px-3 py-2 rounded text-sm font-medium transition-all duration-200 hover:shadow-lg"
-        >
-          ⚙️
-        </button>
+      {/* Actions Section */}
+      <div className="space-y-2 pt-2 border-t border-gray-200">
+        <h3 className="text-sm font-semibold text-gray-700">Actions</h3>
+        <div className="space-y-2">
+          <button
+            onClick={onToggleCollaboration}
+            className={`w-full flex items-center justify-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              isCollaborating
+                ? 'bg-green-100 text-green-700 hover:bg-green-200'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            <span>{isCollaborating ? '👥' : '🔗'}</span>
+            <span>{isCollaborating ? 'Collaborating' : 'Start Collaboration'}</span>
+          </button>
+          
+          {!isCollaborating && (
+            <button
+              onClick={onCreateNewRoom}
+              className="w-full flex items-center justify-center space-x-2 bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+            >
+              <span>🚀</span>
+              <span>New Room</span>
+            </button>
+          )}
+
+          <button
+            onClick={onShowSettings}
+            className="w-full flex items-center justify-center space-x-2 bg-gray-100 text-gray-700 hover:bg-gray-200 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+          >
+            <span>⚙️</span>
+            <span>Settings</span>
+          </button>
+
+          <button
+            onClick={onPrintBoard}
+            className="w-full flex items-center justify-center space-x-2 bg-orange-100 text-orange-700 hover:bg-orange-200 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+            title="Print current board data to console"
+          >
+            <span>🖨️</span>
+            <span>Debug Print</span>
+          </button>
+        </div>
       </div>
     </div>
   )

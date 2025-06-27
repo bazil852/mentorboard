@@ -8,7 +8,7 @@ interface CollaborationPanelProps {
 
 export const CollaborationPanel: React.FC<CollaborationPanelProps> = ({
   roomId,
-  editor: _editor
+  editor
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const shareUrl = `${window.location.origin}?room=${encodeURIComponent(roomId)}`
@@ -104,7 +104,7 @@ export const CollaborationPanel: React.FC<CollaborationPanelProps> = ({
   )
 
   return (
-    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-40">
+    <div>
       {isExpanded ? expandedPanel : toggleButton}
     </div>
   )

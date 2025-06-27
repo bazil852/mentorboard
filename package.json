@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run build:tsc && npm run build:vite",
+    "build:tsc": "tsc -b",
+    "build:vite": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
